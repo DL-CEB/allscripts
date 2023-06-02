@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="utf-8" data_liveedit_tagid="6605484400936582" >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown</title>
+    <style>
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+
+        }
+
+
+
+        .main {
+            background-color: #efefef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main>div {
+            background-color: #fff;
+            width: 40%;
+            height: 100vh;
+            padding: 3rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <ul>
+            <li> styles not required</li>
+            <li>Add js script before &lt;/body&gt; and add class="drop" where ever you want dropdown.</li>
+            <li>Only works if options are inside sqaure brackets.</li>
+            <li>Click to activate dropdown. Double click to deactivate dropdown</li>
+        </ul>
+      
+       
+        <div>
+
+            <div>
+                <p class="drop">
+                    {{customText[Thank you for attending our recent meeting.| Thank you for attending our recent meeting with Prof. Patrick Thornton.| Thank you for attending our recent meeting on Immune Restoration.| Please find the highlights from our recent meeting with Prof. Patrick Thornton below.| Please find the highlights from our recent meeting on immune restoration with Prof. Patrick Thornton below.]}}
+                </p>
+           
+                <p class="drop">
+                    {{customText[Thank you for attending our recent meeting.| Thank you for attending our recent meeting with Prof. Patrick Thornton.| Thank you for attending our recent meeting on Immune Restoration.| Please find the highlights from our recent meeting with Prof. Patrick Thornton below.| Please find the highlights from our recent meeting on immune restoration with Prof. Patrick Thornton below.]}}
+                </p>
+           
+            </div><br><br>
+        </div>
+    </div>
+    <script>
+const customTexts = document.querySelectorAll('.drop');
+customTexts.forEach((customText) => {
+  const ghtmlText = customText.innerHTML;
+  customText.addEventListener('click', addDropdown);
+    customText.addEventListener('dblclick', removeDropdown);
+  function addDropdown() {
+    customText.style.border = '1px solid #4483c4';
+    const htmlText = customText.innerHTML;
+    const str = htmlText.match(/\[(.*?)\]/g)[0];
+    const arr = str.substring(1, str.length - 1).split('|').map(item => item || '&nbsp;');
+    const dropdown = arr.map(item => `<p>${item}</p>`).join('');
+    customText.innerHTML = dropdown;
+    const dropdownP = customText.querySelector('p:first-child');
+    dropdownP.style.border = '1px solid #4483c4';
+    dropdownP.innerHTML += '<span>&#9660;</span>';
+    dropdownP.style.display = 'flex';
+    dropdownP.style.justifyContent = 'space-between';
+    const dropdownSecondP = customText.querySelector('p:nth-child(2)');
+    dropdownSecondP.style.backgroundColor = '#4483c4';
+    dropdownSecondP.style.color = 'white';
+    const paragraphs = customText.querySelectorAll('p');
+    for (let i = 0; i < paragraphs.length; i++) {
+      paragraphs[i].style.margin = "0px";
+      paragraphs[i].style.padding = "2px";
+    }
+    dropdownSecondP.style.margin = '2px 0 0 0';
+  }
+
+  function removeDropdown() {
+    customText.style.border = 'none';
+    customText.style.padding = '0';
+    customText.innerHTML = ghtmlText;
+  }
+});
+    </script>
+<dw-container-div>
+<script src="/static/files/deviceClientScript.js"></script>
+<script src="/static/files/IOSScrolling.js"></script>
+<script src="/static/files/HTMLDOMDiff.js"></script>
+<script src="/static/files/HTMLSimpleDOM.js"></script>
+<script src="/static/files/HTMLTokenizer.js"></script>
+<script src="/static/files/murmurhash3_gc.js"></script>
+<script src="/static/files/RemoteFunctions.js"></script>
+<script src="/static/files/LiveUpdateTools.js"></script>
+<script>$dwJQuery = window.parent.$; window.DevicePreview_RenderSuccess = true; DW_LiveEdit_SetupDoc('<!DOCTYPE html>\n<html lang="en" data_liveedit_tagid="0000000016DE8520">\n<head data_liveedit_tagid="0000000016DE8780">\n    <meta charset="UTF-8" data_liveedit_tagid="0000000016DEC320">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" data_liveedit_tagid="0000000016DEC7E0">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" data_liveedit_tagid="0000000016DECB70">\n    <title data_liveedit_tagid="0000000016DEEC80">File Transfer<\/title>\n<\/head>\n<body data_liveedit_tagid="0000000016DEF140">\n    <a href=".\/Files\/drop-down_updated.html" download data_liveedit_tagid="0000000016DEF3A0">Download<\/a>\n<\/body>\n<\/html>');</script>
+</dw-container-div></body>
+
+</html>
