@@ -8,7 +8,7 @@ To use the Dropdown Library:
 Include the following in your HTML File anywhere:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/DL-CEB/scripts@master/dropdownv2.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/DL-CEB/scripts@master/dropdownv1.js"></script>
 ```
 ----------------------------------------------------------------------------------------------------------
 # Fragments Merging Library
