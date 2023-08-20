@@ -1,4 +1,7 @@
-var fragment_names = ["frag1", "frag2", "frag3"];
+
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+script.type = 'text/javascript';
 function findElementsWithToken() {
   const elementsWithSquareBrackets = [];
   const allTextNodes = document.createTreeWalker(
@@ -52,7 +55,12 @@ function findElementsWithToken() {
 }
 
 window.onload = function dropdown() {
-  $(document).ready(function () {
-    findElementsWithToken();
-  });
+  script.onload = function() {
+
+    $(document).ready(function () {
+      findElementsWithToken();
+    });
+  }
+  document.head.appendChild(script);
 };
+
