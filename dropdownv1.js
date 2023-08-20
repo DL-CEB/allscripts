@@ -29,7 +29,7 @@ function addDropdown(customText) {
 function findElementsWithSquareBrackets() {
   const elementsWithSquareBrackets = [];
   const allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-
+  
   while (allTextNodes.nextNode()) {
       const node = allTextNodes.currentNode;
       const regex = /\{\{.*?\[(.*?)\].*?\}\}/gs;
