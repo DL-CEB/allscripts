@@ -1,3 +1,8 @@
+/*
+Author: M Nabeel
+Date: May 22, 2023
+Description: This JavaScript file contains utility functions for adding dropdown in veeva token.
+*/
 function addDropdown(customText) {
   customText.style.border = '1px solid #4483c4';
   const htmlText = customText.innerHTML;
