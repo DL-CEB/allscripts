@@ -1,4 +1,4 @@
-/*
+  /*
 Author: M Nabeel
 Date: August 21, 2023
 Description: This JavaScript file contains utility functions for handling fragments merging.
@@ -32,27 +32,29 @@ function findElementsWithToken() {
         endIndex: parseInt(match[2]),
       }));
       for (
-        var i = extractedValues[0].startIndex;
-        i <= extractedValues[0].endIndex;
+        var i = 1;
+        i <= fragment_names.length;
         i++
-      ) {
-        console.log(fragment_names[i - 1]);
-        var container = $(`<div class='fragment${i}'></div>`);
-        $("#fragments").append(container);
-        container.load(
-          `../Fragments/Fragment_0${i}/` + encodeURIComponent(fragment_names[i - 1]) + ".html",
-          function () {
-            $(this)
-              .find("img")
-              .each(function () {
-                var currentSrc = $(this).attr("src");
-                $(this).attr(
-                  "src",
-                  `../Fragments/Fragment_0${i - 1}/` + currentSrc
-                );
-              });
-          }
-        );
+      ) { 
+        (function (currentI) {
+    var container = $(`<div class='fragment${currentI}'></div>`);
+    $("#fragments").append(container);
+    container.load(
+      `../Fragments/Fragment_0${currentI}/` + encodeURIComponent(fragment_names[currentI - 1]) + ".html",
+      function () {
+        $(this)
+          .find("img")
+          .each(function () {
+            var currentSrc = $(this).attr("src");
+            console.log(`../Fragments/Fragment_0${currentI}/` + currentSrc, currentI);
+            $(this).attr(
+              "src",
+              `../Fragments/Fragment_0${currentI}/` + currentSrc
+            );
+          });
+      }
+    );
+  })(i);
       }
     }
   }
@@ -62,11 +64,10 @@ function findElementsWithToken() {
 
 window.onload = function dropdown() {
   script.onload = function() {
-
     $(document).ready(function () {
+
       findElementsWithToken();
     });
-  }
-  document.head.appendChild(script);
+    }
+    document.head.appendChild(script);
 };
-
