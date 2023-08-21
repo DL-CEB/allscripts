@@ -40,7 +40,7 @@ function findElementsWithToken() {
         var container = $(`<div class='fragment${i}'></div>`);
         $("#fragments").append(container);
         container.load(
-          `../fragments/fragment_0${i}/` + fragment_names[i - 1] + ".html",
+          `../Fragments/Fragment_0${i}/` + encodeURIComponent(fragment_names[i - 1]) + ".html",
           function () {
             $(this)
               .find("img")
@@ -48,7 +48,7 @@ function findElementsWithToken() {
                 var currentSrc = $(this).attr("src");
                 $(this).attr(
                   "src",
-                  `../fragments/fragment_0${i - 1}/` + currentSrc
+                  `../Fragments/Fragment_0${i - 1}/` + currentSrc
                 );
               });
           }
